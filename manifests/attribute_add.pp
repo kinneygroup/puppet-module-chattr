@@ -10,7 +10,7 @@ define chattr::attribute_add (
   Host <||> -> Exec <| tag == 'chattr_attribute_add' |>
   Resources <||> -> Exec <| tag == 'chattr_attribute_add' |>
 
-  exec { "chattr +i ${name}":
+  exec { "chattr +${attribute} ${name}":
     path   => '/bin:/usr/bin:/sbin:/usr/sbin',
     unless => "lsattr ${name} | awk \'{print \$1}\' |grep ${attribute}",
     tag    => 'chattr_attribute_add',

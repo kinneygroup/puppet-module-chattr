@@ -10,7 +10,7 @@ define chattr::attribute_remove (
   Exec <| tag == 'chattr_attribute_remove' |> -> Host <||>
   Exec <| tag == 'chattr_attribute_remove' |> -> Resources <||>
 
-  exec { "chattr -i ${name}":
+  exec { "chattr -${attribute} ${name}":
     path   => '/bin:/usr/bin:/sbin:/usr/sbin',
     onlyif => "lsattr ${name} | awk \'{print \$1}\' |grep ${attribute}",
     tag    => 'chattr_attribute_remove',
