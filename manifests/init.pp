@@ -11,7 +11,7 @@ class chattr (
   $attribute_removes_hiera_merge = true,
 ) {
 
-  if type($attribute_adds_hiera_merge) == 'string' {
+  if type3x($attribute_adds_hiera_merge) == 'string' {
     $attribute_adds_hiera_merge_real = str2bool($attribute_adds_hiera_merge)
   } else {
     $attribute_adds_hiera_merge_real = $attribute_adds_hiera_merge
@@ -28,7 +28,7 @@ class chattr (
     create_resources('chattr::attribute_add',$attribute_adds_real)
   }
 
-  if type($attribute_removes_hiera_merge) == 'string' {
+  if type3x($attribute_removes_hiera_merge) == 'string' {
     $attribute_removes_hiera_merge_real = str2bool($attribute_removes_hiera_merge)
   } else {
     $attribute_removes_hiera_merge_real = $attribute_removes_hiera_merge
